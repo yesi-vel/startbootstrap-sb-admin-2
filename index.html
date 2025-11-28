@@ -23,39 +23,7 @@
 </head>
 
 <body id="page-top">
-    <div>
-    <h3>Data Sensor Cuaca Kota Cerdas</h3>
-    <p id="cuaca">Memuat data...</p>
-
-<script>
-    // --- GANTI NILAI INI ---
-    const apiKey = '7aedd1a9a700dd5ef0c88e421e288086'; // << HARUS DIGANTI!
-    const city = 'Padang'; // << GANTI NAMA KOTA ANDA
-    // Konstruksi URL yang BENAR menggunakan Template Literal (backtick: `)
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                // Memberi pesan kesalahan jika API Key/Kota salah
-                throw new Error(`HTTP error! Status: ${response.status}. Cek kembali API Key dan nama kota.`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Ambil data yang diperlukan
-            const suhu = data.main.temp;
-            const kelembapan = data.main.humidity;
-            const namaKota = data.name;
-            // Update elemen HTML menggunakan Template Literal yang BENAR
-            document.getElementById("cuaca").innerText =
-                `Lokasi: ${namaKota} | Suhu: ${suhu}°C | Kelembapan: ${kelembapan}%`;
-        })
-        .catch(error => {
-            // Tampilkan pesan kesalahan jika fetch gagal
-            document.getElementById("cuaca").innerText = `Gagal mengambil data. (${error.message})`;
-            console.error(error);
-        });
-</script>
+    
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -403,6 +371,39 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <div>
+    <h3>Data Sensor Cuaca Kota Cerdas</h3>
+    <p id="cuaca">Memuat data...</p>
+
+<script>
+    // --- GANTI NILAI INI ---
+    const apiKey = '7aedd1a9a700dd5ef0c88e421e288086'; // << HARUS DIGANTI!
+    const city = 'Padang'; // << GANTI NAMA KOTA ANDA
+    // Konstruksi URL yang BENAR menggunakan Template Literal (backtick: `)
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                // Memberi pesan kesalahan jika API Key/Kota salah
+                throw new Error(`HTTP error! Status: ${response.status}. Cek kembali API Key dan nama kota.`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Ambil data yang diperlukan
+            const suhu = data.main.temp;
+            const kelembapan = data.main.humidity;
+            const namaKota = data.name;
+            // Update elemen HTML menggunakan Template Literal yang BENAR
+            document.getElementById("cuaca").innerText =
+                `Lokasi: ${namaKota} | Suhu: ${suhu}°C | Kelembapan: ${kelembapan}%`;
+        })
+        .catch(error => {
+            // Tampilkan pesan kesalahan jika fetch gagal
+            document.getElementById("cuaca").innerText = `Gagal mengambil data. (${error.message})`;
+            console.error(error);
+        });
+</script>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
